@@ -1,0 +1,1 @@
+export {default as restaurantRoute} from "./restaurant.route"
