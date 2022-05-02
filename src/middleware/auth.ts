@@ -13,7 +13,7 @@ interface JwtPayload {
 }
 
 interface userInterface extends Request {
-  user?: any;
+  profile?: any;
   token?: string;
   role?: string;
 }
@@ -34,7 +34,7 @@ const auth = async (req: userInterface, res: Response, next: NextFunction) => {
       user = await Restaurant.findById(verified.restaurantID);
     }
 
-    req.user = user;
+    req.profile = user;
     req.token = token;
     req.role = verified.role;
 

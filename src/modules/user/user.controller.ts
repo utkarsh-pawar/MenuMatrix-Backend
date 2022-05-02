@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { Request, response, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import generateOtp from '../../helpers/generateOtp';
 
@@ -7,7 +7,7 @@ import User from './user.model';
 import config from '../../config/env.config';
 
 interface userInterface extends Request {
-  user?: any;
+  profile?: any;
   token?: string;
   role?: string;
 }
@@ -55,3 +55,15 @@ export const verifyOtp = async (req: Request, res: Response) => {
   }
 };
 
+export const editProfile = async (req: userInterface, res: Response) => {
+  try {
+    const { first_name, last_name, email } = req.body;
+    const { _id } = req.profile;
+    const updatedUser = await User.findByIdAndUpdate({ _id }, { first_name, last_name, email }, { new: true });
+    const result = returnResponse.success(updatedUser);
+    res.status(200).json(result);
+  } catch (e) {
+    const error = returnResponse.error(e);
+    res.status(400).json(error);
+  }
+};

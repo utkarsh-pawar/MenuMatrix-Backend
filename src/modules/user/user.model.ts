@@ -11,7 +11,6 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       trim: true,
-      validate(value: string) {},
     },
     contact_no: {
       type: Number,
@@ -21,9 +20,6 @@ const userSchema = new mongoose.Schema(
     },
     otp: {
       type: Number,
-    },
-    profile_image: {
-      type: String,
     },
     status: {
       type: String,

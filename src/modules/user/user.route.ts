@@ -7,7 +7,9 @@ import auth from '../../middleware/auth';
 const router = express.Router();
 
 router.post('/signup', validator.validateContactNumber, runValidation, userController.signup);
-router.post('/verifyotp', userController.verifyOtp);
+router.post('/verify-otp', userController.verifyOtp);
+
+router.put('/edit-profile',auth, userController.editProfile);
 
 
 export default router;

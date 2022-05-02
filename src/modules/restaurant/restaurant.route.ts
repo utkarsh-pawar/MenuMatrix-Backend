@@ -6,7 +6,7 @@ import runValidation from '../../validators/runValidator';
 const router = express.Router();
 
 router.post('/signup', validator.validateContactNumber, runValidation, restaurantController.signup);
-router.post('/verifyotp', restaurantController.verifyOtp);
+router.post('/verify-otp', restaurantController.verifyOtp);
 
 // router.get('/', userController.getAll);
 
